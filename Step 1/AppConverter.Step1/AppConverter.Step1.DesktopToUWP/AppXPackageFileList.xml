@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MyProjectOutputPath>$(PackageLayout)\..\..\AppConverter.Step1\bin</MyProjectOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <LayoutFile Include="$(MyProjectOutputPath)\Debug\AppConverter.Step1.exe">
+      <PackagePath>$(PackageLayout)\AppConverter.Step1.exe</PackagePath>
+    </LayoutFile>
+  </ItemGroup>
+</Project>
