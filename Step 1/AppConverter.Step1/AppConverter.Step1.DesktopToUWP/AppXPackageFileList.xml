@@ -7,5 +7,8 @@
     <LayoutFile Include="$(MyProjectOutputPath)\Debug\AppConverter.Step1.exe">
       <PackagePath>$(PackageLayout)\AppConverter.Step1.exe</PackagePath>
     </LayoutFile>
+    <LayoutFile Include="$(MyProjectOutputPath)\Debug\Newtonsoft.Json.dll">
+      <PackagePath>$(PackageLayout)\Newtonsoft.Json.dll</PackagePath>
+    </LayoutFile>
   </ItemGroup>
 </Project>
