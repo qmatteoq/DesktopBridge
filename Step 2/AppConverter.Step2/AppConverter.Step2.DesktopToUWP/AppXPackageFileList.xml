@@ -4,7 +4,7 @@
     <MyProjectOutputPath>$(PackageLayout)\..\..\AppConverter.Step2\bin</MyProjectOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <LayoutFile Include="$(MyProjectOutputPath)\Debug\AppConverter.Step2.exe">
+    <LayoutFile Include="$(MyProjectOutputPath)\DesktopUWP\AppConverter.Step2.exe">
       <PackagePath>$(PackageLayout)\AppConverter.Step2.exe</PackagePath>
     </LayoutFile>
   </ItemGroup>

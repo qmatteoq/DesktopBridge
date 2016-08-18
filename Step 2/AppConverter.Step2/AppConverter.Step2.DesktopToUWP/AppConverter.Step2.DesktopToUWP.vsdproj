@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Platform Condition="'$(Platform)' == ''">x86</Platform>
-    <ProjectGuid>{15C289AA-5DF2-4BE3-BF2C-C33728F7F036}</ProjectGuid>
+    <ProjectGuid>{C39AAF68-C230-430B-9912-EA3571EA4BA1}</ProjectGuid>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -45,6 +45,7 @@
     <Content Include="PackageLayout\Assets\SampleAppx.150x150.png" />
     <Content Include="PackageLayout\Assets\SampleAppx.44x44.png" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
   </PropertyGroup>
