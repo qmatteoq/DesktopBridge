@@ -16,15 +16,12 @@ namespace AppConverter.Step3
 
         static void Main(string[] args)
         {
-            Thread appServiceThread = new Thread(new ThreadStart(ThreadProc));
+            Thread appServiceThread = new Thread(new ThreadStart(HandleAppServiceConnection));
             appServiceThread.Start();
-            Console.WriteLine("*****************************");
-            Console.WriteLine("**** Classic desktop app ****");
-            Console.WriteLine("*****************************");
             Console.ReadLine();
         }
 
-        static async void ThreadProc()
+        static async void HandleAppServiceConnection()
         {
             connection = new AppServiceConnection();
             connection.AppServiceName = "CommunicationService";

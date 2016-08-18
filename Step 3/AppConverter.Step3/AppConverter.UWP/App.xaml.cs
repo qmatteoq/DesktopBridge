@@ -36,7 +36,6 @@ namespace AppConverter.UWP
 
         public static AppServiceConnection Connection = null;
 
-        BackgroundTaskDeferral appServiceDeferral = null;
         /// <summary>
         /// Initializes the app service on the host process 
         /// </summary>
@@ -45,7 +44,7 @@ namespace AppConverter.UWP
             base.OnBackgroundActivated(args);
             if (args.TaskInstance.TriggerDetails is AppServiceTriggerDetails)
             {
-                appServiceDeferral = args.TaskInstance.GetDeferral();
+                BackgroundTaskDeferral appServiceDeferral = args.TaskInstance.GetDeferral();
                 AppServiceTriggerDetails details = args.TaskInstance.TriggerDetails as AppServiceTriggerDetails;
                 Connection = details.AppServiceConnection;
             }

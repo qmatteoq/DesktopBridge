@@ -9,11 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-            <TextBox x:Name="Message" />
-            <Button Content="Create file on desktop" Click="OnCreateFile" />
-            <TextBlock x:Name="Result" Style="{StaticResource HeaderTextBlockStyle}" />
+                VerticalAlignment="Center" Width="500">
+            <TextBox x:Name="Message" HorizontalAlignment="Center" />
+            <Button Content="Create file on desktop" Click="OnCreateFile" HorizontalAlignment="Center" />
+            <TextBlock x:Name="Result" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
         </StackPanel>
-                    
     </Grid>
 </Page>
