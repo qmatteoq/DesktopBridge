@@ -18,13 +18,10 @@ namespace AppConverter.Step4
             InitializeComponent();
         }
 
-        private void OnRegisterTask(object sender, EventArgs e)
+        private async void OnRegisterTask(object sender, EventArgs e)
         {
-            RegisterBackgroundTask("TimeZoneTriggerTest", new SystemTrigger(SystemTriggerType.TimeZoneChange, false));
-        }
+            string triggerName = "TimeZoneTriggerTest";
 
-        public static void RegisterBackgroundTask(String triggerName, IBackgroundTrigger trigger)
-        {
             // Check if the task is already registered
             foreach (var cur in BackgroundTaskRegistration.AllTasks)
             {
@@ -37,9 +34,13 @@ namespace AppConverter.Step4
 
             BackgroundTaskBuilder builder = new BackgroundTaskBuilder();
             builder.Name = triggerName;
-            builder.SetTrigger(trigger);
+            builder.SetTrigger(new SystemTrigger(SystemTriggerType.TimeZoneChange, false));
             builder.TaskEntryPoint = "TileBackgroundTask.TileTask";
-            builder.Register();
+            var status = await BackgroundExecutionManager.RequestAccessAsync();
+            if (status != BackgroundAccessStatus.DeniedByUser && status != BackgroundAccessStatus.DeniedBySystemPolicy)
+            {
+                builder.Register();
+            }
         }
     }
 }

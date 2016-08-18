@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
-xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
 xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
   <Identity Name="AppConverter.Step4" ProcessorArchitecture="x86" Publisher="CN=mpagani" Version="1.0.0.0" />
   <Properties>
@@ -39,5 +39,5 @@ xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/re
       </InProcessServer>
     </Extension>
   </Extensions>
-  
+
 </Package>
