@@ -48,6 +48,7 @@ namespace AppConverter.Step2
             ToastNotificationManager.CreateToastNotifier().Show(toast);
         }
 
+        [Conditional("DesktopUWP")]
         private async void OnGenerateAudio(object sender, EventArgs e)
         {
             SpeechSynthesizer speech = new SpeechSynthesizer();
