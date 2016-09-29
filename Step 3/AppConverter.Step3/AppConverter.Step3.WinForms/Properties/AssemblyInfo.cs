@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AppConverter.Step3")]
+[assembly: AssemblyTitle("AppConverter.Step3.WinForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AppConverter.Step3")]
+[assembly: AssemblyProduct("AppConverter.Step3.WinForms")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("66be573a-e254-4fae-b0d8-1934b16e5103")]
+[assembly: Guid("a88d4252-f228-44f9-9483-3b1e904dd16c")]
 
 // Version information for an assembly consists of the following four values:
 //

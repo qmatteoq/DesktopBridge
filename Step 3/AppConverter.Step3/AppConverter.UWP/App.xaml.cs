@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppConverter.UWP.Messages;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,6 +49,7 @@ namespace AppConverter.UWP
                 BackgroundTaskDeferral appServiceDeferral = args.TaskInstance.GetDeferral();
                 AppServiceTriggerDetails details = args.TaskInstance.TriggerDetails as AppServiceTriggerDetails;
                 Connection = details.AppServiceConnection;
+                Messenger.Default.Send<ConnectionReadyMessage>(new ConnectionReadyMessage());
             }
         }
 

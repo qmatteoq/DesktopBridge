@@ -46,7 +46,7 @@
         <uap:Extension Category="windows.appService">
           <uap:AppService Name="CommunicationService" />
         </uap:Extension>
-        <desktop:Extension Category="windows.fullTrustProcess" Executable="AppConverter.Step3.exe" />
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="AppConverter.Step3.WinForms.exe" />
       </Extensions>
     </Application>
   </Applications>

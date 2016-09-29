@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using AppConverter.UWP.Messages;
+using GalaSoft.MvvmLight.Messaging;
+using System;
 using Windows.ApplicationModel.AppService;
-using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Storage;
+using Windows.System.Profile;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace AppConverter.UWP
 {
@@ -27,25 +19,43 @@ namespace AppConverter.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Desktop")
+            {
+                OpenForm.Visibility = Visibility.Collapsed;
+            }
+
+            Messenger.Default.Register<ConnectionReadyMessage>(this, message =>
+            {
+                if (App.Connection != null)
+                {
+                    App.Connection.RequestReceived += Connection_RequestReceived;
+                }
+            });
+
+        }
+
+        private async void Connection_RequestReceived(AppServiceConnection sender, AppServiceRequestReceivedEventArgs args)
+        {
+            string name = args.Request.Message["name"].ToString();
+            Result.Text = $"Hello {name}";
+            ValueSet valueSet = new ValueSet();
+            valueSet.Add("response", "success");
+            await args.Request.SendResponseAsync(valueSet);
+        }
+
+        private async void OnOpenForm(object sender, RoutedEventArgs e)
         {
             await Windows.ApplicationModel.FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
         }
 
-        private async void OnCreateFile(object sender, RoutedEventArgs e)
+        private void OnSayHello(object sender, RoutedEventArgs e)
         {
-            string text = $"{Message.Text} published at {DateTime.Now}";
-            ValueSet valueSet = new ValueSet();
-            valueSet.Add("request", text);
-
-            if (App.Connection != null)
-            {
-                AppServiceResponse response = await App.Connection.SendMessageAsync(valueSet);
-                string message = response.Message["response"].ToString();
-                Result.Text = message;
-            }
+            Result.Text = "Hello world!";
         }
     }
 }

@@ -9,10 +9,12 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center" Width="500">
-            <TextBox x:Name="Message" HorizontalAlignment="Center" />
-            <Button Content="Create file on desktop" Click="OnCreateFile" HorizontalAlignment="Center" />
-            <TextBlock x:Name="Result" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
+                VerticalAlignment="Center">
+            <TextBlock Text="Communication between UWP and Win32" Style="{StaticResource HeaderTextBlockStyle}"
+                       TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" />
+            <Button x:Name="OpenForm" Content="Open form" Click="OnOpenForm" HorizontalAlignment="Center" Margin="0, 20, 0, 0" />
+            <Button Content="Say hello!" Click="OnSayHello"  HorizontalAlignment="Center" x:Name="SayHello" Margin="0, 20, 0, 0" />
+            <TextBlock x:Name="Result" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" Margin="0, 20, 0, 0" />
         </StackPanel>
     </Grid>
 </Page>
