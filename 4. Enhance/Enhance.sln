@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.25428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppConverter.Step2", "AppConverter.Step2\AppConverter.Step2.csproj", "{E4C3D351-9C5B-483D-B80D-C5B724CE7F4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhance", "Enhance\Enhance.csproj", "{E4C3D351-9C5B-483D-B80D-C5B724CE7F4E}"
 EndProject
-Project("{365BE41E-7993-430D-A5E6-1381A54BC077}") = "AppConverter.Step2.DesktopToUWP", "AppConverter.Step2.DesktopToUWP\AppConverter.Step2.DesktopToUWP.vsdproj", "{C39AAF68-C230-430B-9912-EA3571EA4BA1}"
+Project("{365BE41E-7993-430D-A5E6-1381A54BC077}") = "Enhance.DesktopToUWP", "Enhance.DesktopToUWP\Enhance.DesktopToUWP.vsdproj", "{C39AAF68-C230-430B-9912-EA3571EA4BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

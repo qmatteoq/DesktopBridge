@@ -2,10 +2,10 @@
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
 xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
 xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities">
-  <Identity Name="AppConverter.Step2" ProcessorArchitecture="x86" Publisher="CN=mpagani" Version="1.0.0.0" />
+  <Identity Name="Enhance" ProcessorArchitecture="x86" Publisher="CN=mpagani" Version="1.0.0.0" />
   <Properties>
-    <DisplayName>AppConverter.Step2</DisplayName>
-    <PublisherDisplayName>CN=mpagani</PublisherDisplayName>
+    <DisplayName>Enhance</DisplayName>
+    <PublisherDisplayName>Matteo Pagani</PublisherDisplayName>
     <Logo>Assets\SampleAppx.150x150.png</Logo>
   </Properties>
   <Resources>
@@ -18,8 +18,8 @@ xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/re
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
   <Applications>
-    <Application Id="AppConverter.Step2" Executable="AppConverter.Step2.exe" EntryPoint="Windows.FullTrustApplication">
-      <uap:VisualElements DisplayName="AppConverter.Step2" Description="AppConverter.Step2" BackgroundColor="#777777" 
+    <Application Id="Enhance" Executable="Enhance.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements DisplayName="Enhance" Description="Enhance" BackgroundColor="#777777" 
 	  Square150x150Logo="Assets\SampleAppx.150x150.png" Square44x44Logo="Assets\SampleAppx.44x44.png"/>
     </Application>
   </Applications>

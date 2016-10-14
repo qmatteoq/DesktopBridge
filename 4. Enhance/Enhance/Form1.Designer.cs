@@ -1,4 +1,4 @@
-﻿namespace AppConverter.Step2
+﻿namespace Enhance
 {
     partial class Form1
     {
@@ -73,7 +73,7 @@
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Enhance";
             this.ResumeLayout(false);
 
         }

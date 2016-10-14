@@ -1,20 +1,12 @@
 ﻿using DesktopBridge.UwpHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.Media.SpeechSynthesis;
-using Windows.Storage;
 using Windows.UI.Notifications;
 
-namespace AppConverter.Step2
+namespace Enhance
 {
     public partial class Form1 : Form
     {
@@ -27,14 +19,6 @@ namespace AppConverter.Step2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-#if DesktopUWP
-            if (!IsRunningAsUwp())
-            {
-                MessageBox.Show("You have launched the app without the UWP container");
-                this.Close();
-            }
-#endif
-
             if (IsRunningAsUwp())
             {
                 txtUwp.Text = "I'm running inside a UWP container";
@@ -94,7 +78,7 @@ namespace AppConverter.Step2
             }
         }
 
-        private async void OnGenerateAudio(object sender, EventArgs e)
+        private void OnGenerateAudio(object sender, EventArgs e)
         {
             GenerateAudio();
         }
