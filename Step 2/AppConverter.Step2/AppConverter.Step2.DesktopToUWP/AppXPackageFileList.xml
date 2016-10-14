@@ -7,5 +7,8 @@
     <LayoutFile Include="$(MyProjectOutputPath)\DesktopUWP\AppConverter.Step2.exe">
       <PackagePath>$(PackageLayout)\AppConverter.Step2.exe</PackagePath>
     </LayoutFile>
+    <LayoutFile Include="$(MyProjectOutputPath)\DesktopUWP\DesktopBridge.UwpHelpers.dll">
+      <PackagePath>$(PackageLayout)\DesktopBridge.UwpHelpers.dll</PackagePath>
+    </LayoutFile>
   </ItemGroup>
 </Project>

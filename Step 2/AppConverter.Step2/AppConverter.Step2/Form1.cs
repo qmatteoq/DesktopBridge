@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopBridge.UwpHelpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Windows.Media.SpeechSynthesis;
+using Windows.Storage;
 using Windows.UI.Notifications;
 
 namespace AppConverter.Step2
@@ -19,6 +21,34 @@ namespace AppConverter.Step2
         public Form1()
         {
             InitializeComponent();
+            this.Load += Form1_Load;
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+#if DesktopUWP
+            if (!IsRunningAsUwp())
+            {
+                MessageBox.Show("You have launched the app without the UWP container");
+                this.Close();
+            }
+#endif
+
+            if (IsRunningAsUwp())
+            {
+                txtUwp.Text = "I'm running inside a UWP container";
+            }
+            else
+            {
+                txtUwp.Text = "I'm running as a native desktop app";
+            }
+        }
+
+        private bool IsRunningAsUwp()
+        {
+            UwpHelpers helpers = new UwpHelpers();
+            return helpers.IsRunningAsUwp();
         }
 
         private void OnCreateFile(object sender, EventArgs e)
@@ -49,7 +79,7 @@ namespace AppConverter.Step2
         }
 
         [Conditional("DesktopUWP")]
-        private async void OnGenerateAudio(object sender, EventArgs e)
+        private async void GenerateAudio()
         {
             SpeechSynthesizer speech = new SpeechSynthesizer();
             var result = await speech.SynthesizeTextToStreamAsync("Hello cenntennial");
@@ -62,6 +92,11 @@ namespace AppConverter.Step2
                 await result.AsStreamForRead().CopyToAsync(stream);
                 await stream.FlushAsync();
             }
+        }
+
+        private async void OnGenerateAudio(object sender, EventArgs e)
+        {
+            GenerateAudio();
         }
     }
 }

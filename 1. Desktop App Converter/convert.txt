@@ -1,0 +1,1 @@
+DesktopAppConverter.exe -Installer ".\Hello Centennial.msi" -Destination ".\Converted" -PackageName "HelloCentennial" -Publisher "CN=mpagani" -Version "1.0.0.0" -MakeAppx -Verbose -Sign
