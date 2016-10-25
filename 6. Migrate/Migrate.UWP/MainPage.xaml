@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="Migrate.UWP.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <TextBlock Text="Communication between UWP and Win32" Style="{StaticResource HeaderTextBlockStyle}"
+                       TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" />
+            <Button x:Name="OpenForm" Content="Open form" Click="OnOpenForm" HorizontalAlignment="Center" Margin="0, 20, 0, 0" />
+            <Button Content="Say hello!" Click="OnSayHello"  HorizontalAlignment="Center" x:Name="SayHello" Margin="0, 20, 0, 0" />
+            <TextBlock x:Name="Result" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" Margin="0, 20, 0, 0" />
+        </StackPanel>
+    </Grid>
+</Page>

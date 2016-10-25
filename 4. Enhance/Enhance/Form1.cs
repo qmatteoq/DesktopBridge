@@ -1,4 +1,4 @@
-﻿using DesktopBridge.UwpHelpers;
+﻿using DesktopBridge;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -31,7 +31,7 @@ namespace Enhance
 
         private bool IsRunningAsUwp()
         {
-            UwpHelpers helpers = new UwpHelpers();
+            Helpers helpers = new Helpers();
             return helpers.IsRunningAsUwp();
         }
 

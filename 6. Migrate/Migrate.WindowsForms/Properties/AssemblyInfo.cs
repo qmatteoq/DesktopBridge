@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Enhance")]
+[assembly: AssemblyTitle("Migrate.WindowsForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Enhance")]
+[assembly: AssemblyProduct("Migrate.WindowsForms")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e4c3d351-9c5b-483d-b80d-c5b724ce7f4e")]
+[assembly: Guid("b107f204-8dfc-4d4b-8c2f-6cb44308ea49")]
 
 // Version information for an assembly consists of the following four values:
 //
