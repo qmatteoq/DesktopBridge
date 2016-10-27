@@ -5,7 +5,7 @@
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Platform Condition="'$(Platform)' == ''">x86</Platform>
     <ProjectTypeGuids>{365BE41E-7993-430D-A5E6-1381A54BC077};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{895C6FBC-B597-4631-B921-5104AB7CD68B}</ProjectGuid>
+    <ProjectGuid>{87D6AE6C-9E9A-4057-AFBB-DEE5FE8C5680}</ProjectGuid>
     <MinimumVisualStudioVersion>15</MinimumVisualStudioVersion>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
@@ -51,7 +51,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>Extend.DesktopToUWP</RootNamespace>
+    <RootNamespace>DesktopApp.WriteRegistry.DeployToUWP</RootNamespace>
   </PropertyGroup>
   <Import Project="$(MSBuildProjectFullPath).user" Condition="Exists('$(MSBuildProjectFullPath).user')" />
   <Import Project="$(MSBuildProjectDirectory)\AppXPackageFileList.xml" />
