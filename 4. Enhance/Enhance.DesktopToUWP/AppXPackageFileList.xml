@@ -7,8 +7,8 @@
     <LayoutFile Include="$(MyProjectOutputPath)\DesktopUWP\Enhance.exe">
       <PackagePath>$(PackageLayout)\Enhance.exe</PackagePath>
     </LayoutFile>
-    <LayoutFile Include="$(MyProjectOutputPath)\DesktopUWP\DesktopBridge.UwpHelpers.dll">
-      <PackagePath>$(PackageLayout)\DesktopBridge.UwpHelpers.dll</PackagePath>
+    <LayoutFile Include="$(MyProjectOutputPath)\DesktopUWP\DesktopBridge.Helpers.dll">
+      <PackagePath>$(PackageLayout)\DesktopBridge.Helpers.dll</PackagePath>
     </LayoutFile>
   </ItemGroup>
 </Project>
