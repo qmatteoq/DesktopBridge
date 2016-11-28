@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using Windows.Data.Xml.Dom;
 using Windows.Media.SpeechSynthesis;
 using Windows.UI.Notifications;
 
@@ -55,11 +56,31 @@ namespace Enhance
             </visual>
         </toast>";
 
-            Windows.Data.Xml.Dom.XmlDocument doc = new Windows.Data.Xml.Dom.XmlDocument();
+            XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
 
             ToastNotification toast = new ToastNotification(doc);
             ToastNotificationManager.CreateToastNotifier().Show(toast);
+
+
+            string tileXml = $@"<tile>
+                            <visual>
+                                <binding template='TileMedium' branding='logo'>
+                                    <group>
+                                        <subgroup>
+                                            <text hint-style='caption'>The file has been created!</text>
+                                            <text hint-style='captionSubtle' hint-wrap='true'>Last update at {DateTime.Now}</text>
+                                        </subgroup>
+                                    </group>
+                                </binding>
+                            </visual>
+                        </tile>";
+
+            XmlDocument tileDoc = new XmlDocument();
+            tileDoc.LoadXml(tileXml);
+
+            TileNotification notification = new TileNotification(tileDoc);
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(notification);
         }
 
         [Conditional("DesktopUWP")]
