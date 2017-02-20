@@ -113,16 +113,16 @@ namespace Migrate.UWP
         /// <summary>
         /// Initializes the app service on the host process 
         /// </summary>
-        protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
-        {
-            base.OnBackgroundActivated(args);
-            if (args.TaskInstance.TriggerDetails is AppServiceTriggerDetails)
-            {
-                BackgroundTaskDeferral appServiceDeferral = args.TaskInstance.GetDeferral();
-                AppServiceTriggerDetails details = args.TaskInstance.TriggerDetails as AppServiceTriggerDetails;
-                Connection = details.AppServiceConnection;
-                Messenger.Default.Send<ConnectionReadyMessage>(new ConnectionReadyMessage());
-            }
-        }
+protected override void OnBackgroundActivated(BackgroundActivatedEventArgs args)
+{
+    base.OnBackgroundActivated(args);
+    if (args.TaskInstance.TriggerDetails is AppServiceTriggerDetails)
+    {
+        BackgroundTaskDeferral appServiceDeferral = args.TaskInstance.GetDeferral();
+        AppServiceTriggerDetails details = args.TaskInstance.TriggerDetails as AppServiceTriggerDetails;
+        Connection = details.AppServiceConnection;
+        Messenger.Default.Send<ConnectionReadyMessage>(new ConnectionReadyMessage());
+    }
+}
     }
 }
