@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
+         xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10" 
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+         xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" 
+         IgnorableNamespaces="uap rescap mp desktop">
+  <Identity Name="HelloCentennial" Version="1.0.0.0" Publisher="CN=mpagani" ProcessorArchitecture="x86" />
+  <Properties>
+    <DisplayName>Hello Centennial</DisplayName>
+    <PublisherDisplayName>Matteo Pagani</PublisherDisplayName>
+    <Logo>Assets\storelogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="en-us" />
+  </Resources>
+  <Applications>
+    <Application Id="HelloCentennial" Executable="HelloCentennial.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements DisplayName="Hello Centennial" Description="Hello Centennial" BackgroundColor="transparent" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png">
+        <uap:DefaultTile Square310x310Logo="Assets\LargeTile.png" Wide310x150Logo="Assets\WideTile.png" Square71x71Logo="Assets\SmallTile.png">
+        </uap:DefaultTile>
+      </uap:VisualElements>
+      <Extensions>
+        <desktop:Extension Category="windows.startupTask" Executable="HelloCentennial.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="HelloCentennialTask" Enabled="true" DisplayName="Hello Centennial Startup Task" />
+        </desktop:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>
