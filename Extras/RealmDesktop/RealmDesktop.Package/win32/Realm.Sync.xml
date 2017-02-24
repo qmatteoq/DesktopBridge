@@ -1,0 +1,989 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Realm.Sync</name>
+    </assembly>
+    <members>
+        <member name="T:Realms.Sync.Exceptions.ErrorCode">
+             <summary>
+             Error code enumeration, indicating the type of the error.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.Unknown">
+             <summary>
+             Unrecognized error code. It usually indicates incompatibility between the authentication server and client SDK versions.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.SessionClosed">
+             <summary>
+             Session has been closed (no error).
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.OtherSessionError">
+             <summary>
+             Other session level error has occurred.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.AccessTokenExpired">
+             <summary>
+             Access token has already expired.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.BadUserAuthentication">
+             <summary>
+             Failed to authenticate user.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.IllegalRealmPath">
+             <summary>
+             Path to Realm is invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.NoSuchRealm">
+             <summary>
+             Path points to non-existing Realm.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.PermissionDenied">
+             <summary>
+             Permission to Realm has been denied.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.BadServerFileIdentifier">
+             <summary>
+             The server file identifier is invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.BadClientFileIdentifier">
+             <summary>
+             The client file identifier is invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.BadServerVersion">
+             <summary>
+             The server version is invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.BadClientVersion">
+             <summary>
+             The client version is invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.DivergingHistories">
+             <summary>
+             Histories have diverged and cannot be merged.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.BadChangeset">
+             <summary>
+             The changeset is invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.DisabledSession">
+             <summary>
+             The session has been disabled.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.InvalidParameters">
+             <summary>
+             Your request parameters did not validate.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.MissingParameters">
+             <summary>
+             Your request did not validate because of missing parameters.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.InvalidCredentials">
+             <summary>
+             The provided credentials are invalid.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.UnknownAccount">
+             <summary>
+             The account does not exist.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.ExistingAccount">
+             <summary>
+             The account cannot be registered as it exists already.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.AccessDenied">
+             <summary>
+             The path is invalid or current user has no access.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.ExpiredRefreshToken">
+             <summary>
+             The refresh token is expired.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.InvalidHost">
+             <summary>
+             The server is not authoritative for this URL.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.ExpiredPermissionOffer">
+             <summary>
+             The permission offer is expired.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.AmbiguousPermissionOfferToken">
+             <summary>
+             The token used on the permission request does match more than a single permission offer.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.Exceptions.ErrorCode.FileMayNotBeShared">
+             <summary>
+             The Realm file at the specified path is not available for shared access.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.Exceptions.ErrorCodeExtensions">
+             <summary>
+             A set of extensions that simplify checking for common error scenarios.
+             </summary>
+            </member>
+        <member name="M:Realms.Sync.Exceptions.ErrorCodeExtensions.IsClientResetError(Realms.Sync.Exceptions.ErrorCode)">
+             <summary>
+             Checks if an error code indicates that a client reset is needed.
+             </summary>
+             <returns><c>true</c>, if the code indicates a client reset error, <c>false</c> otherwise.</returns>
+             <param name="code">The error code.</param>
+            </member>
+        <member name="T:Realms.Sync.Credentials">
+             <summary>
+             A class, representing the credentials used for authenticating a <see cref="T:Realms.Sync.User" />.
+             </summary>
+            </member>
+        <member name="M:Realms.Sync.Credentials.Custom(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+             <summary>
+             Creates an instance of <see cref="T:Realms.Sync.Credentials" /> with a custom provider and user identifier.
+             </summary>
+             <param name="identityProvider">Provider used to verify the credentials.</param>
+             <param name="userIdentifier">String identifying the user. Usually a username of id.</param>
+             <param name="userInfo">Data describing the user further or null if the user does not have any extra data. The data will be serialized to JSON, so all values must be mappable to a valid JSON data type.</param>
+             <returns>An instance of <see cref="T:Realms.Sync.Credentials" /> that can be used in <see cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" /></returns>
+            </member>
+        <member name="M:Realms.Sync.Credentials.Debug">
+             <summary>
+             Creates an instance of <see cref="T:Realms.Sync.Credentials" /> to be used during development. Not enabled for Realm Object Server configured for production.
+             </summary>
+             <returns>An instance of <see cref="T:Realms.Sync.Credentials" /> that can be used in <see cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" /></returns>
+            </member>
+        <member name="M:Realms.Sync.Credentials.Facebook(System.String)">
+             <summary>
+             Creates <see cref="T:Realms.Sync.Credentials" /> based on a Facebook login.
+             </summary>
+             <param name="facebookToken">A Facebook authentication token, obtained by logging into Facebook.</param>
+             <returns>An instance of <see cref="T:Realms.Sync.Credentials" /> that can be used in <see cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" /></returns>
+            </member>
+        <member name="M:Realms.Sync.Credentials.Google(System.String)">
+             <summary>
+             Creates <see cref="T:Realms.Sync.Credentials" /> based on a Google login.
+             </summary>
+             <param name="googleToken">A Google authentication token, obtained by logging into Google.</param>
+             <returns>An instance of <see cref="T:Realms.Sync.Credentials" /> that can be used in <see cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" /></returns>
+            </member>
+        <member name="M:Realms.Sync.Credentials.UsernamePassword(System.String,System.String,System.Boolean)">
+             <summary>
+             Creates <see cref="T:Realms.Sync.Credentials" /> based on a login with a username and a password.
+             </summary>
+             <param name="username">The username of the user.</param>
+             <param name="password">The user's password.</param>
+             <param name="createUser"><c>true</c> if the user should be created, <c>false</c> otherwise. It is not possible to create a user twice when logging in, so this flag should only be set to true the first time a user logs in.</param>
+             <returns>An instance of <see cref="T:Realms.Sync.Credentials" /> that can be used in <see cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" /></returns>
+            </member>
+        <member name="P:Realms.Sync.Credentials.IdentityProvider">
+             <summary>
+             Gets the identity provider for the credentials.
+             </summary>
+             <value>The identity provider, such as Google, Facebook, etc.</value>
+            </member>
+        <member name="P:Realms.Sync.Credentials.Token">
+             <summary>
+             Gets the access token.
+             </summary>
+             <value>The access token.</value>
+            </member>
+        <member name="P:Realms.Sync.Credentials.UserInfo">
+             <summary>
+             Gets additional user information associated with the credentials.
+             </summary>
+             <value>A dictionary, containing the additional information.</value>
+            </member>
+        <member name="T:Realms.Sync.Session">
+             <summary>
+             An object encapsulating a Realm Object Server session. Sessions represent the communication between the client 
+             (and a local Realm file on disk), and the server (and a remote Realm at a given URL stored on a Realm Object Server).
+             Sessions are always created by the SDK and vended out through various APIs. The lifespans of sessions associated
+             with Realms are managed automatically.
+             </summary>
+            </member>
+        <member name="E:Realms.Sync.Session.Error">
+             <summary>
+             Triggered when an error occurs on a session. The <c>sender</c> argument will be the session which has errored.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.Session.ServerUri">
+             <summary>
+             Gets the <see cref="T:System.Uri" /> describing the remote Realm which this session connects to and synchronizes changes with.
+             </summary>
+             <value>The <see cref="T:System.Uri" /> where the Realm Object Server resides.</value>
+            </member>
+        <member name="P:Realms.Sync.Session.State">
+             <summary>
+             Gets the session’s current state.
+             </summary>
+             <value>An enum value indicating the state of the session.</value>
+            </member>
+        <member name="P:Realms.Sync.Session.User">
+             <summary>
+             Gets the <see cref="T:Realms.Sync.User" /> defined by the <see cref="T:Realms.Sync.SyncConfiguration" /> that is used to connect to the Realm Object Server.
+             </summary>
+             <value>The <see cref="T:Realms.Sync.User" /> that was used to create the <see cref="T:Realms.Realm" />'s <see cref="T:Realms.Sync.SyncConfiguration" />.</value>
+            </member>
+        <member name="M:Realms.Sync.Session.GetProgressObservable(Realms.Sync.ProgressDirection,Realms.Sync.ProgressMode)">
+             <summary>
+             Gets an <see cref="T:System.IObservable`1" /> that can be used to track upload or download progress.
+             </summary>
+             <remarks>
+             To start receiving notifications, you should call <see cref="M:System.IObservable`1.Subscribe(System.IObserver{``0})" /> on the returned object.
+             The token returned from <see cref="M:System.IObservable`1.Subscribe(System.IObserver{``0})" /> should be retained as long as progress
+             notifications are desired. To stop receiving notifications, call <see cref="M:System.IDisposable.Dispose" />
+             on the token.
+             You don't need to keep a reference to the observable itself.
+             The progress callback will always be called once immediately upon subscribing in order to provide
+             the latest available status information.
+             </remarks>
+             <returns>An observable that you can subscribe to and receive progress updates.</returns>
+             <param name="direction">The transfer direction (upload or download) to track in the subscription callback.</param>
+             <param name="mode">The desired behavior of this progress notification block.</param>
+             <example>
+             <code>
+             class ProgressNotifyingViewModel
+             {
+                 private IDisposable notificationToken;
+             
+                 public void ShowProgress()
+                 {
+                     var observable = session.GetProgressObservable(ProgressDirection.Upload, ProgressMode.ReportIndefinitely);
+                     notificationToken = observable.Subscribe(progress =&gt;
+                     {
+                         // Update relevant properties by accessing
+                         // progress.TransferredBytes and progress.TransferableBytes
+                     });
+                 }
+             
+                 public void HideProgress()
+                 {
+                     notificationToken?.Dispose();
+                     notificationToken = null;
+                 }
+             }
+             </code>
+             In this example we're using <see href="https://msdn.microsoft.com/en-us/library/ff402849(v=vs.103).aspx">ObservableExtensions.Subscribe</see>
+             found in the <see href="https://github.com/Reactive-Extensions/Rx.NET">Reactive Extensions</see> class library.
+             If you prefer not to take a dependency on it, you can create a class that implements <see cref="T:System.IObserver`1" />
+             and use it to subscribe instead.
+             </example>
+            </member>
+        <member name="T:Realms.Sync.SyncConfiguration">
+             <summary>
+             A <see cref="T:Realms.Sync.SyncConfiguration" /> is used to setup a <see cref="T:Realms.Realm" /> that can be synchronized between devices using the
+             Realm Object Server. A valid <see cref="T:Realms.Sync.User" /> is required to create a <see cref="T:Realms.Sync.SyncConfiguration" />.
+             </summary>
+             <seealso cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" />
+             <seealso cref="T:Realms.Sync.Credentials" />
+            </member>
+        <member name="P:Realms.Sync.SyncConfiguration.ServerUri">
+             <summary>
+             Gets the <see cref="T:System.Uri" /> used to create this <see cref="T:Realms.Sync.SyncConfiguration" />.
+             </summary>
+             <value>The <see cref="T:System.Uri" /> where the Realm Object Server is hosted.</value>
+            </member>
+        <member name="P:Realms.Sync.SyncConfiguration.User">
+             <summary>
+             Gets the <see cref="T:Realms.Sync.User" /> used to create this <see cref="T:Realms.Sync.SyncConfiguration" />.
+             </summary>
+             <value>The <see cref="T:Realms.Sync.User" /> whose <see cref="T:Realms.Realm" />s will be synced.</value>
+            </member>
+        <member name="M:Realms.Sync.SyncConfiguration.#ctor(Realms.Sync.User,System.Uri,System.String)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Realms.Sync.SyncConfiguration" /> class.
+             </summary>
+             <param name="user">A valid <see cref="T:Realms.Sync.User" />.</param>
+             <param name="serverUri">A unique <see cref="T:System.Uri" /> that identifies the Realm. In URIs, <c>~</c> can be used as a placeholder for a user Id.</param>
+             <param name="optionalPath">Path to the realm, must be a valid full path for the current platform, relative subdirectory, or just filename.</param>
+            </member>
+        <member name="T:Realms.Sync.User">
+             <summary>
+             This class represents a user on the Realm Object Server. The credentials are provided by various 3rd party providers (Facebook, Google, etc.).
+             A user can log in to the Realm Object Server, and if access is granted, it is possible to synchronize the local and the remote Realm. Moreover, synchronization is halted when the user is logged out.
+             It is possible to persist a user. By retrieving a user, there is no need to log in to the 3rd party provider again. Persisting a user between sessions, the user's credentials are stored locally on the device, and should be treated as sensitive data.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.User.Current">
+             <summary>
+             Gets the currently logged-in user. If none exists, null is returned. 
+             If more than one user is currently logged in, an exception is thrown.
+             </summary>
+             <value>Valid user or <c>null</c> to indicate nobody logged in.</value>
+             <exception cref="T:Realms.Exceptions.RealmException">Thrown if there are more than one users logged in.</exception>
+            </member>
+        <member name="P:Realms.Sync.User.AllLoggedIn">
+             <summary>
+             Gets all currently logged in users.
+             </summary>
+             <value>An array of valid logged in users.</value>
+            </member>
+        <member name="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)">
+             <summary>
+             Logs the user in to the Realm Object Server.
+             </summary>
+             <param name="credentials">The credentials to use for authentication.</param>
+             <param name="serverUrl">The URI of the server that the user is authenticated against.</param>
+             <returns>An awaitable Task, that, upon completion, contains the logged in user.</returns>
+            </member>
+        <member name="M:Realms.Sync.User.ConfigurePersistence(Realms.Sync.UserPersistenceMode,System.Byte[],System.Boolean)">
+             <summary>
+             Configures user persistence. If you need to call this, be sure to do so before accessing any other Realm API.
+             </summary>
+             <param name="mode">The persistence mode.</param>
+             <param name="encryptionKey">The key to encrypt the persistent user store with.</param>
+             <param name="resetOnError">If set to <c>true</c> reset the persistent user store on error.</param>
+             <remarks>
+             Users are persisted in a realm file within the application's sandbox.
+             <para>
+             By default <see cref="T:Realms.Sync.User" /> objects are persisted and are additionally protected with an encryption key stored
+             in the iOS Keychain when running on an iOS device (but not on a Simulator).
+             On Android users are persisted in plaintext, because the AndroidKeyStore API is only supported on API level 18 and up.
+             You might want to provide your own encryption key on Android or disable persistence for security reasons.
+             </para>
+             </remarks>
+            </member>
+        <member name="P:Realms.Sync.User.RefreshToken">
+             <summary>
+             Gets this user's refresh token. This is the user's credential for accessing the Realm Object Server and
+             should be treated as sensitive data.
+             </summary>
+             <value>A unique string that can be used for refreshing the user's credentials.</value>
+            </member>
+        <member name="P:Realms.Sync.User.Identity">
+             <summary>
+             Gets the identity of this user on the Realm Object Server. The identity is a guaranteed to be unique
+             among all users on the Realm Object Server.
+             </summary>
+             <value>A string that uniquely identifies that user in Realm Object Server.</value>
+            </member>
+        <member name="P:Realms.Sync.User.ServerUri">
+             <summary>
+             Gets the server <see cref="T:System.Uri" /> that was used for authentication.
+             </summary>
+             <value>The <see cref="T:System.Uri" /> used to connect to the authentication service.</value>
+            </member>
+        <member name="P:Realms.Sync.User.State">
+             <summary>
+             Gets the current state of the user.
+             </summary>
+             <value>A value indicating whether the user is active, logged out, or an error has occurred.</value>
+            </member>
+        <member name="M:Realms.Sync.User.LogOut">
+             <summary>
+             Logs out the user from the Realm Object Server. Once the Object Server has confirmed the logout the user credentials will be deleted from this device.
+             </summary>
+            </member>
+        <member name="M:Realms.Sync.User.Equals(Realms.Sync.User)">
+             <inheritdoc />
+            </member>
+        <member name="T:Realms.Sync.IPermissionObject">
+             <summary>
+             Interface that describes the shared base model of all Permission classes.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.IPermissionObject.Id">
+             <summary>
+             Gets the unique identifier of this object in the Management realm.
+             </summary>
+             <value>The unique id of the object.</value>
+            </member>
+        <member name="P:Realms.Sync.IPermissionObject.CreatedAt">
+             <summary>
+             Gets the creation time of this object.
+             </summary>
+             <value>A <see cref="T:System.DateTimeOffset" /> indicating the object's creation date and time.</value>
+            </member>
+        <member name="P:Realms.Sync.IPermissionObject.UpdatedAt">
+             <summary>
+             Gets when the object was updated the last time.
+             </summary>
+             <remarks>
+             This will be updated by the server with the current object when the object is processed.
+             </remarks>
+             <value>A <see cref="T:System.DateTimeOffset" /> indicating the last time the object has been updated.</value>
+            </member>
+        <member name="P:Realms.Sync.IPermissionObject.ErrorCode">
+             <summary>
+             Gets the <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> if any.
+             </summary>
+             <remarks>
+             Filled by the server after an object was processed indicating the status of the operation. 
+             If <see cref="P:Realms.Sync.IPermissionObject.Status" /> returns <see cref="F:Realms.Sync.ManagementObjectStatus.Error" />, the <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> 
+             property can be used to get a strongly typed code for the error and handle expected error conditions, such as
+             expired offer or attempting to share a realm without having manage access.
+             </remarks>
+             <value>
+             An <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> that indicates the reason for the error during processing.
+             <c>null</c> if no error has occurred or the object hasn't been processed yet.
+             </value>
+            </member>
+        <member name="P:Realms.Sync.IPermissionObject.StatusMessage">
+             <summary>
+             Gets the status message.
+             </summary>
+             <remarks>
+             Filled by the server after an object was processed with additional info
+             explaining the status if necessary.
+             </remarks>
+             <value>A detailed message describing the status (success, error) of the operation. <c>null</c> if the object
+             has not been processed yet.</value>
+            </member>
+        <member name="P:Realms.Sync.IPermissionObject.Status">
+             <summary>
+             Gets the <see cref="T:Realms.Sync.ManagementObjectStatus" /> as set by the server.
+             </summary>
+             <value>An enum indicating whether the operation has completed successfully.</value>
+            </member>
+        <member name="T:Realms.Sync.PermissionChange">
+             <summary>
+             Objects of this class allow to change permissions of owned Realms.
+             They are created exclusively by the client and are processed by the server
+             as indicated by the status fields.
+             </summary>
+             <remarks>
+             <see cref="T:Realms.Sync.PermissionChange" /> objects allow to grant and revoke permissions by setting
+             <see cref="P:Realms.Sync.PermissionChange.MayRead" />, <see cref="P:Realms.Sync.PermissionChange.MayWrite" /> and <see cref="P:Realms.Sync.PermissionChange.MayManage" /> accordingly. 
+             If any of these flags are not set, these are merged
+             with either the existing or default permissions as applicable. As a
+             side-effect this causes that the default permissions are permanently
+             materialized for the affected Realm files and the affected user.
+             Once the request has been processed, the <see cref="P:Realms.Sync.PermissionChange.Status" />, <see cref="P:Realms.Sync.PermissionChange.StatusMessage" />, and
+             <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> will be updated accordingly.
+             </remarks>
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.Id">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.CreatedAt">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.UpdatedAt">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.StatusMessage">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.Status">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.ErrorCode">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.UserId">
+             <summary>
+             Gets the user or users to effect.
+             </summary>
+             <value><c>*</c> to change the permissions for all users.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.RealmUrl">
+             <summary>
+             Gets the Realm to change permissions for.
+             </summary>
+             <value><c>*</c> to change the permissions of all Realms.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.MayRead">
+             <summary>
+             Gets a value indicating whether the user(s) have read access to the specified Realm(s).
+             </summary>
+             <value><c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.MayWrite">
+             <summary>
+             Gets a value indicating whether the user(s) have write access to the specified Realm(s).
+             </summary>
+             <value><c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionChange.MayManage">
+             <summary>
+             Gets a value indicating whether the user(s) have manage access to the specified Realm(s).
+             </summary>
+             <value><c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</value>
+            </member>
+        <member name="M:Realms.Sync.PermissionChange.#ctor(System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+             <summary>
+             Initializes a new instance of the <see cref="T:Realms.Sync.PermissionChange" /> class.
+             </summary>
+             <param name="userId">The user or users who should be granted these permission changes. Use * to change permissions for all users.</param>
+             <param name="realmUrl">The Realm URL whose permissions settings should be changed. Use `*` to change the permissions of all Realms managed by the management Realm's <see cref="T:Realms.Sync.User" />.</param>
+             <param name="mayRead">Define read access. <c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</param>
+             <param name="mayWrite">Define write access. <c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</param>
+             <param name="mayManage">Define manage access. <c>true</c> or <c>false</c> to request this new value. <c>null</c> to keep current value.</param>
+            </member>
+        <member name="T:Realms.Sync.UserPermissionsExtensions">
+             <summary>
+             A set of extensions methods over the <see cref="T:Realms.Sync.User" /> class that expose functionality for managing synchronized Realm permissions.
+             </summary>
+            </member>
+        <member name="M:Realms.Sync.UserPermissionsExtensions.GetManagementRealm(Realms.Sync.User)">
+             <summary>
+             Returns an instance of the Management Realm owned by the user.
+             </summary>
+             <remarks>
+             This Realm can be used to control access and permissions for Realms owned by the user. This includes
+             giving other users access to Realms.
+             </remarks>
+             <seealso href="https://realm.io/docs/realm-object-server/#modifying-permissions">How to control permissions</seealso>
+             <param name="user">The user whose Management Realm to get.</param>
+             <returns>A Realm that can be used to control access and permissions for Realms owned by the user.</returns>
+            </member>
+        <member name="M:Realms.Sync.UserPermissionsExtensions.GetPermissionRealm(Realms.Sync.User)">
+             <summary>
+             Returns an instance of the Permission Realm owned by the user.
+             </summary>
+             <remarks>
+             This Realm can be used to review access permissions for Realms managed by the user
+             and to Realms which the user was granted access to by other users.
+             </remarks>
+             <param name="user">The user whose Permission Realm to get.</param>
+             <returns>A Realm that can be used to inspect access to other Realms.</returns>
+            </member>
+        <member name="T:Realms.Sync.SessionState">
+             <summary>
+             The current state of a sync session object.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.SessionState.Active">
+             <summary>
+             The session is connected to the Realm Object Server and is actively transferring data.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.SessionState.Inactive">
+             <summary>
+             The session is not currently communicating with the Realm Object Server.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.SessionState.Invalid">
+             <summary>
+             A non-recoverable error has occurred, and this session is semantically invalid. A new session should be created.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.UserState">
+             <summary>
+             The state of the user object.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.UserState.LoggedOut">
+             <summary>
+             The user is logged out. Call <see cref="M:Realms.Sync.User.LoginAsync(Realms.Sync.Credentials,System.Uri)" /> with valid credentials to log the user back in.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.UserState.Active">
+             <summary>
+             The user is logged in, and any Realms associated with it are synchronizing with the Realm Object Server.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.UserState.Error">
+             <summary>
+             The user has encountered a fatal error state, and cannot be used.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.Exceptions.SessionException">
+             <summary>
+             An exception type that describes a session-level error condition.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.Exceptions.SessionException.ErrorCode">
+             <summary>
+             Gets the error code that describes the session error this exception represents.
+             </summary>
+             <value>An enum value, providing more detailed information for the cause of the error.</value>
+            </member>
+        <member name="T:Realms.Sync.UserPersistenceMode">
+             <summary>
+             Enumeration that specifies how and if logged-in <see cref="T:Realms.Sync.User" /> objects are persisted
+             across application launches.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.UserPersistenceMode.NotEncrypted">
+             <summary>
+             Persist <see cref="T:Realms.Sync.User" /> objects, but do not encrypt them.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.UserPersistenceMode.Encrypted">
+             <summary>
+             Persist <see cref="T:Realms.Sync.User" /> objects in an encrypted store.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.UserPersistenceMode.Disabled">
+             <summary>
+             Do not persist <see cref="T:Realms.Sync.User" /> objects.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.ManagementObjectStatus">
+             <summary>
+             The status of the management object as set by the server.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ManagementObjectStatus.NotProcessed">
+             <summary>
+             The server hasn't yet processed the request.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ManagementObjectStatus.Success">
+             <summary>
+             The server has processed the request successfully.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ManagementObjectStatus.Error">
+             <summary>
+             There was an error while processing the request. See <see cref="P:Realms.Sync.IPermissionObject.StatusMessage" /> for more details.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.PermissionOffer">
+             <summary>
+             Objects of this class are used to offer permissions to owned Realms.
+             They are created exclusively by the client and are processed by the server
+             as indicated by the status fields.
+             </summary>
+             <remarks>
+             When offering permissions, you should create the offer and add it to the <see cref="T:Realms.Sync.User" />'s Management Realm.
+             Then you should subscribe to <see cref="E:Realms.RealmObject.PropertyChanged" /> to be notified when the server has 
+             processed the request.
+             Once the request has been processed, the <see cref="P:Realms.Sync.PermissionOffer.Status" />, <see cref="P:Realms.Sync.PermissionOffer.StatusMessage" />, and
+             <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> will be updated accordingly.
+             If the request has been processed successfully, the <see cref="P:Realms.Sync.PermissionOffer.Token" /> will be populated and you can share it
+             with users you wish to grant permissions to.
+             If the request has failed, the <see cref="P:Realms.Sync.PermissionOffer.StatusMessage" /> will be updated with relevant information about the
+             failure and <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> will be set to a non-null value.
+             </remarks>
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.Id">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.CreatedAt">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.UpdatedAt">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.StatusMessage">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.Status">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.ErrorCode">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.Token">
+             <summary>
+             Gets the token that can be used to offer the permissions defined in this object to another user.
+             </summary>
+             <value>A string, set by the server, that can be used to create a <see cref="T:Realms.Sync.PermissionOfferResponse" />.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.RealmUrl">
+             <summary>
+             Gets the url of the <see cref="T:Realms.Realm" /> to offer permissions to.
+             </summary>
+             <value>The url of Realm.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.MayRead">
+             <summary>
+             Gets a value indicating whether the receiver of this offer will be able to read from the <see cref="T:Realms.Realm" />.
+             </summary>
+             <value><c>true</c> to allow the receiver to read data from the <see cref="T:Realms.Realm" />.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.MayWrite">
+             <summary>
+             Gets a value indicating whether the receiver of this offer will be able to write to the Realm.
+             </summary>
+             <value><c>true</c> to allow the receiver to write data to the <see cref="T:Realms.Realm" />.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.MayManage">
+             <summary>
+             Gets a value indicating whether the receiver of this offer will be able to manage access rights for others.
+             </summary>
+             <value><c>true</c> to allow the receiver to offer others access to the <see cref="T:Realms.Realm" />.</value>
+            </member>
+        <member name="P:Realms.Sync.PermissionOffer.ExpiresAt">
+             <summary>
+             Gets or sets the expiration date and time of the offer.
+             </summary>
+             <value>If <c>null</c>, the offer will never expire. Otherwise, the offer may not be consumed past the expiration date.</value>
+            </member>
+        <member name="M:Realms.Sync.PermissionOffer.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean,System.Nullable{System.DateTimeOffset})">
+             <summary>
+             Initializes a new instance of the <see cref="T:Realms.Sync.PermissionOffer" /> class.
+             </summary>
+             <param name="realmUrl">The Realm URL to offer permissions to.</param>
+             <param name="mayRead">If set to <c>true</c> grants read access.</param>
+             <param name="mayWrite">If set to <c>true</c> grants write access.</param>
+             <param name="mayManage">If set to <c>true</c> grants manage access.</param>
+             <param name="expiresAt">Optional expiration date of the offer. If set to <c>null</c>, the offer doesn't expire.</param>
+            </member>
+        <member name="T:Realms.Sync.PermissionOfferResponse">
+             <summary>
+             Objects of this class are used to accept a <see cref="T:Realms.Sync.PermissionOffer" /> using a provided <see cref="P:Realms.Sync.PermissionOfferResponse.Token" />.
+             </summary>
+             <remarks>
+             Create an instance of <see cref="T:Realms.Sync.PermissionOfferResponse" /> using the provided <see cref="P:Realms.Sync.PermissionOffer.Token" />
+             and add it to the <see cref="T:Realms.Sync.User" />'s ManagementRealm.
+             After that, you should subscribe to <see cref="E:Realms.RealmObject.PropertyChanged" /> to be notified when the server
+             processes the response.
+             Once the request has been processed, the <see cref="P:Realms.Sync.PermissionOfferResponse.Status" />, <see cref="P:Realms.Sync.PermissionOfferResponse.StatusMessage" />, and
+             <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> will be updated accordingly.
+             If the request has been processed successfully, the <see cref="P:Realms.Sync.PermissionOfferResponse.RealmUrl" /> will be populated and you can use it
+             to create a new <see cref="T:Realms.Sync.SyncConfiguration" />.
+             If the request has failed, the <see cref="P:Realms.Sync.PermissionOfferResponse.StatusMessage" /> will be updated with relevant information about the
+             failure and <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> will be set to a non-null value.
+             </remarks>
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.Id">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.CreatedAt">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.UpdatedAt">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.StatusMessage">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.Status">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.ErrorCode">
+             <inheritdoc />
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.Token">
+             <summary>
+             Gets the token that was provided by the offering user.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.PermissionOfferResponse.RealmUrl">
+             <summary>
+             Gets the url of the Realm that the token has granted permissions to.
+             </summary>
+             <remarks>
+             Filled by the server after the <see cref="T:Realms.Sync.PermissionOfferResponse" /> was processed.
+             </remarks>
+            </member>
+        <member name="M:Realms.Sync.PermissionOfferResponse.#ctor(System.String)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Realms.Sync.PermissionOfferResponse" /> class.
+             </summary>
+             <param name="token">The token that was provided by the offering user.</param>
+            </member>
+        <member name="T:Realms.Sync.Exceptions.AuthenticationException">
+             <summary>
+             An exception thrown when an error has occurred during authentication. It usually indicates a logical problem
+             with the request that can be investigated by inspecting the <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> property.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.Exceptions.AuthenticationException.ErrorCode">
+             <summary>
+             Gets the <see cref="T:Realms.Sync.Exceptions.ErrorCode" /> of the error.
+             </summary>
+             <value>An enum value indicating the error code.</value>
+            </member>
+        <member name="T:Realms.Sync.Exceptions.HttpException">
+             <summary>
+             An exception thrown when a transport error occurs during authentication. 
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.Exceptions.HttpException.StatusCode">
+             <summary>
+             Gets the <see cref="T:System.Net.HttpStatusCode" /> of the response.
+             </summary>
+             <value>A well known <see cref="T:System.Net.HttpStatusCode" />.</value>
+            </member>
+        <member name="P:Realms.Sync.Exceptions.HttpException.ReasonPhrase">
+             <summary>
+             Gets the Reason-Phrase of the HTTP response.
+             </summary>
+             <value>The Reason-Phrase of the HTTP response.</value>
+            </member>
+        <member name="P:Realms.Sync.Exceptions.HttpException.Payload">
+             <summary>
+             Gets the body of the HTTP response.
+             </summary>
+             <value>The body of the HTTP response.</value>
+            </member>
+        <member name="T:Realms.Sync.SyncProgress">
+             <summary>
+             A struct containing information about the progress state at a given instant.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.SyncProgress.TransferredBytes">
+             <summary>
+             Gets the number of bytes that have been transferred since subscribing for progress notifications.
+             </summary>
+             <value>The number of transferred bytes.</value>
+            </member>
+        <member name="P:Realms.Sync.SyncProgress.TransferableBytes">
+             <summary>
+             Gets the total number of bytes that have to be transferred since subscribing for progress notifications.
+             The difference between that number and <see cref="P:Realms.Sync.SyncProgress.TransferredBytes" /> gives you the number of bytes not yet
+             transferred. If the difference is 0, then all changes at the instant the callback fires have been
+             successfully transferred.
+             </summary>
+             <value>The number of transferable bytes.</value>
+            </member>
+        <member name="T:Realms.Sync.ProgressDirection">
+             <summary>
+             The transfer direction (upload or download) tracked by a given progress notification subscription.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ProgressDirection.Upload">
+             <summary>
+             Monitors upload progress.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ProgressDirection.Download">
+             <summary>
+             Monitors download progress.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.ProgressMode">
+             <summary>
+             The desired behavior of a progress notification subscription.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ProgressMode.ReportIndefinitely">
+             <summary>
+             The callback will be called forever, or until it is unregistered by disposing the subscription token.
+             Notifications will always report the latest number of transferred bytes, and the most up-to-date number of 
+             total transferable bytes.
+             </summary>
+            </member>
+        <member name="F:Realms.Sync.ProgressMode.ForCurrentlyOutstandingWork">
+             <summary>
+             The callback will, upon registration, store the total number of bytes to be transferred. When invoked, it will 
+             always report the most up-to-date number of transferable bytes out of that original number of transferable bytes.
+             When the number of transferred bytes reaches or exceeds the number of transferable bytes, the callback will 
+             be unregistered.
+             </summary>
+            </member>
+        <member name="T:Realms.Sync.RealmSyncExtensions">
+             <summary>
+             A set of extension methods that provide Sync-related functionality on top of Realm classes.
+             </summary>
+            </member>
+        <member name="M:Realms.Sync.RealmSyncExtensions.GetSession(Realms.Realm)">
+             <summary>
+             Gets the <see cref="T:Realms.Sync.Session" /> for the realm file behind this <see cref="T:Realms.Realm" />.
+             </summary>
+             <returns>The <see cref="T:Realms.Sync.Session" /> that is responsible for synchronizing with a Realm Object Server instance.</returns>
+             <param name="realm">An instance of the <see cref="T:Realms.Realm" /> class created with a <see cref="T:Realms.Sync.SyncConfiguration" /> object.</param>
+             <exception cref="T:System.ArgumentNullException">Thrown if <c>realm</c> is <c>null</c>.</exception>
+             <exception cref="T:System.ArgumentException">Thrown if <c>realm</c> was not created with a <see cref="T:Realms.Sync.SyncConfiguration" /> object.</exception>
+            </member>
+        <member name="T:Realms.Sync.Testing.TestingExtensions">
+             <summary>
+             A set of extension methods to be used in unit-testing scenarios. Should not be used in production.
+             </summary>
+            </member>
+        <member name="M:Realms.Sync.Testing.TestingExtensions.SimulateError(Realms.Sync.Session,Realms.Sync.Exceptions.ErrorCode,System.String,System.Boolean)">
+             <summary>
+             Simulates a session error.
+             </summary>
+             <param name="session">The session where the simulated error will occur.</param>
+             <param name="errorCode">Error code.</param>
+             <param name="message">Error message.</param>
+             <param name="isFatal">If set to <c>true</c> the error will be marked as fatal.</param>
+             <remarks>
+             Use this method to test your error handling code without connecting to a Realm Object Server.
+             Some error codes, such as <see cref="F:Realms.Sync.Exceptions.ErrorCode.OtherSessionError" /> will be ignored and will not be reported
+             to <see cref="E:Realms.Sync.Session.Error" /> subscribers.
+             </remarks>
+            </member>
+        <member name="M:Realms.Sync.Testing.TestingExtensions.SimulateProgress(Realms.Sync.Session,System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+             <summary>
+             Simulates a progress update.
+             </summary>
+             <param name="session">Session which will report progress.</param>
+             <param name="downloadedBytes">Downloaded bytes.</param>
+             <param name="downloadableBytes">Downloadable bytes.</param>
+             <param name="uploadedBytes">Uploaded bytes.</param>
+             <param name="uploadableBytes">Uploadable bytes.</param>
+             <remarks>
+             Use this method to test your progress handling code without connecting to a Realm Object Server.
+             Some throttling may occur at a native level, so it is recommended to use <c>Task.Delay()</c> between invocations.
+             </remarks>
+            </member>
+        <member name="T:Realms.Sync.Exceptions.ClientResetException">
+             <summary>
+             An exception describing a condition where a reset of the local Realm is required.
+             </summary>
+            </member>
+        <member name="P:Realms.Sync.Exceptions.ClientResetException.BackupFilePath">
+             <summary>
+             Gets the path where the backup copy of the realm will be placed once the client reset process is complete.
+             </summary>
+             <value>The path to the backup realm.</value>
+            </member>
+        <member name="M:Realms.Sync.Exceptions.ClientResetException.InitiateClientReset">
+             <summary>
+             Initiates the client reset process.
+             </summary>
+             <returns><c>true</c> if actions were run successfully, <c>false</c> otherwise.</returns>
+            </member>
+        <member name="T:Realms.Sync.Permission">
+             <summary>
+             This model is used to reflect permissions granted to a user.
+             It should be used in conjunction with a <see cref="T:Realms.Sync.User" />'s Permission Realm.
+             </summary>
+             <see cref="M:Realms.Sync.UserPermissionsExtensions.GetPermissionRealm(Realms.Sync.User)" />
+            </member>
+        <member name="P:Realms.Sync.Permission.UpdatedAt">
+             <summary>
+             Gets when the object was updated the last time.
+             </summary>
+             <value>A <see cref="T:System.DateTimeOffset" /> indicating the last time the object has been updated.</value>
+            </member>
+        <member name="P:Realms.Sync.Permission.UserId">
+             <summary>
+             Gets the identity of the user affected by this permission.
+             </summary>
+             <value>The user identity.</value>
+            </member>
+        <member name="P:Realms.Sync.Permission.Path">
+             <summary>
+             Gets the relative path to the Realm on the server.
+             </summary>
+             <value>A relative path component.</value>
+            </member>
+        <member name="P:Realms.Sync.Permission.MayRead">
+             <summary>
+             Gets a value indicating whether the user inspecting that permission is allowed to read the Realm at the
+             specified <see cref="P:Realms.Sync.Permission.Path" />.
+             </summary>
+             <value><c>true</c> if reading is allowed, <c>false</c> otherwise.</value>
+            </member>
+        <member name="P:Realms.Sync.Permission.MayWrite">
+             <summary>
+             Gets a value indicating whether the user inspecting that permission is allowed to write to the Realm at the
+             specified <see cref="P:Realms.Sync.Permission.Path" />.
+             </summary>
+             <value><c>true</c> if writing is allowed, <c>false</c> otherwise.</value>
+            </member>
+        <member name="P:Realms.Sync.Permission.MayManage">
+             <summary>
+             Gets a value indicating whether the user inspecting that permission is allowed to manage the permissions for
+             the Realm at the specified <see cref="P:Realms.Sync.Permission.Path" />.
+             </summary>
+             <value><c>true</c> if managing is allowed, <c>false</c> otherwise.</value>
+            </member>
+    </members>
+</doc>

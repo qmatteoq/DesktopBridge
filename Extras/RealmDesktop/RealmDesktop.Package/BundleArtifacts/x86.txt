@@ -1,0 +1,6 @@
+MainPackage=C:\Users\mpagani\Documents\Visual Studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\x86\Debug\RealmDesktop.Package_1.1.0.0_x86_Debug.appx
+SymbolPackage=C:\Users\mpagani\Documents\Visual Studio 2017\Projects\RealmDesktop\RealmDesktop.Package\AppPackages\RealmDesktop.Package_1.1.0.0_Debug_Test\RealmDesktop.Package_1.1.0.0_x86_Debug.appxsym
+ResourcePack=C:\Users\mpagani\Documents\Visual Studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\x86\Debug\RealmDesktop.Package_1.1.0.0_scale-100.appx
+ResourcePack=C:\Users\mpagani\Documents\Visual Studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\x86\Debug\RealmDesktop.Package_1.1.0.0_scale-125.appx
+ResourcePack=C:\Users\mpagani\Documents\Visual Studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\x86\Debug\RealmDesktop.Package_1.1.0.0_scale-150.appx
+ResourcePack=C:\Users\mpagani\Documents\Visual Studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\x86\Debug\RealmDesktop.Package_1.1.0.0_scale-400.appx

@@ -1,0 +1,6 @@
+MainPackage=c:\users\mpagani\documents\visual studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\Release\RealmDesktop.Package_1.1.0.0_AnyCPU.appx
+SymbolPackage=c:\users\mpagani\documents\visual studio 2017\Projects\RealmDesktop\RealmDesktop.Package\AppPackages\RealmDesktop.Package_1.1.0.0_Test\RealmDesktop.Package_1.1.0.0_AnyCPU.appxsym
+ResourcePack=c:\users\mpagani\documents\visual studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\Release\RealmDesktop.Package_1.1.0.0_scale-100.appx
+ResourcePack=c:\users\mpagani\documents\visual studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\Release\RealmDesktop.Package_1.1.0.0_scale-125.appx
+ResourcePack=c:\users\mpagani\documents\visual studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\Release\RealmDesktop.Package_1.1.0.0_scale-150.appx
+ResourcePack=c:\users\mpagani\documents\visual studio 2017\Projects\RealmDesktop\RealmDesktop.Package\bin\Release\RealmDesktop.Package_1.1.0.0_scale-400.appx

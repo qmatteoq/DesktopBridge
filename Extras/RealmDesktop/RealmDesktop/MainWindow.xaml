@@ -1,0 +1,33 @@
+﻿<Window x:Class="RealmDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RealmDesktop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="250">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Margin="12, 0 ,0 ,0">
+            <TextBlock Text="Name" />
+            <TextBox x:Name="txtName" Width="200" />
+            <TextBlock Text="Surname"  />
+            <TextBox x:Name="txtSurname" Width="200"  />
+            <Button Content="Save user" Click="OnSaveUser" Width="150" Margin="0, 20, 0, 0" />
+            <Button Content="Get count" Click="OnGetCount" Width="150" />
+            <Button Content="List customers" Click="OnListCustomers" Width="150" />
+
+            <ListView x:Name="listCustomers" Margin="0, 20, 0,0 ">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Name}" />
+                            <TextBlock Text="{Binding Path=Surname}" Margin="3, 0, 0, 0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Content="Update customer" Click="OnUpdateCustomer" Width="150" Margin="0, 20, 0, 0" />
+        </StackPanel>
+    </Grid>
+</Window>
