@@ -1,0 +1,5 @@
+MainPackage=C:\Users\mpagani\Source\Samples\DesktopBridge\Extras\CurrentWorkingDirectory\CurrentWorkingDirectory.Package\bin\x86\Release\CurrentWorkingDirectory.Package_1.0.0.0_x86.appx
+ResourcePack=C:\Users\mpagani\Source\Samples\DesktopBridge\Extras\CurrentWorkingDirectory\CurrentWorkingDirectory.Package\bin\x86\Release\CurrentWorkingDirectory.Package_1.0.0.0_scale-100.appx
+ResourcePack=C:\Users\mpagani\Source\Samples\DesktopBridge\Extras\CurrentWorkingDirectory\CurrentWorkingDirectory.Package\bin\x86\Release\CurrentWorkingDirectory.Package_1.0.0.0_scale-125.appx
+ResourcePack=C:\Users\mpagani\Source\Samples\DesktopBridge\Extras\CurrentWorkingDirectory\CurrentWorkingDirectory.Package\bin\x86\Release\CurrentWorkingDirectory.Package_1.0.0.0_scale-150.appx
+ResourcePack=C:\Users\mpagani\Source\Samples\DesktopBridge\Extras\CurrentWorkingDirectory\CurrentWorkingDirectory.Package\bin\x86\Release\CurrentWorkingDirectory.Package_1.0.0.0_scale-400.appx
