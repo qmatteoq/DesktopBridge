@@ -89,6 +89,8 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy /y /s "$(SolutionDir)Migrate.WindowsForms\bin\$(ConfigurationName)\Migrate.WindowsForms.exe" "$(SolutionDir)\Migrate.UWP\bin\x64\$(ConfigurationName)\AppX\"
 xcopy /y /s "$(SolutionDir)Migrate.WindowsForms\bin\$(ConfigurationName)\Migrate.WindowsForms.exe" "$(SolutionDir)\Migrate.UWP\bin\x86\$(ConfigurationName)\AppX\"
+xcopy /y /s "$(SolutionDir)Migrate.WindowsForms\bin\$(ConfigurationName)\Migrate.WindowsForms.exe" "$(SolutionDir)\Migrate.UWP\bin\x64\$(ConfigurationName)\"
+xcopy /y /s "$(SolutionDir)Migrate.WindowsForms\bin\$(ConfigurationName)\Migrate.WindowsForms.exe" "$(SolutionDir)\Migrate.UWP\bin\x86\$(ConfigurationName)\"
 </PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\UwpDesktop.10.0.14393.3\build\portable-net45+uap\UwpDesktop.targets" Condition="Exists('..\packages\UwpDesktop.10.0.14393.3\build\portable-net45+uap\UwpDesktop.targets')" />
